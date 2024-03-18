@@ -20,7 +20,7 @@ document.querySelector('#submitWorkout').addEventListener('click', displayWorkou
 // Function to add new fitness goals and remove completed ones
 // NOW LET'S DEBUG TO PREVENT DUPLICATE GOALS FROM BEING SUBMITTED 🚀
 
-// Function to add new fitness goals and prevent duplicate submissions which also trims
+// Function to add new fitness goals, orders them in a list and prevent duplicate submissions which also trims
 const addNewGoal = () => {
     const goalInput = document.querySelector('#goalInput').value.trim();
     const goalList = document.querySelector('#goalList');
