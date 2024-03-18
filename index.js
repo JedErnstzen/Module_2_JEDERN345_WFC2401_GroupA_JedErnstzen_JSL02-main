@@ -22,7 +22,7 @@ document.querySelector('#submitWorkout').addEventListener('click', displayWorkou
 
 // Function to add new fitness goals, orders them in a list and prevent duplicate submissions which also trims
 const addNewGoal = () => {
-    const goalInput = document.querySelector('#goalInput').value.trim();
+    const goalInput = document.querySelector('#goalInput').value.replace(/\s+/g, '').toLowerCase();
     const goalList = document.querySelector('#goalList');
     
     if (goalInput === '') {
@@ -32,19 +32,21 @@ const addNewGoal = () => {
 
     const existingGoals = goalList.querySelectorAll('li');
     for (let goal of existingGoals) {
-        if (goal.textContent.trim() === goalInput) {
+        const existingGoalText = goal.textContent.replace(/\s+/g, '').toLowerCase();
+        if (existingGoalText === goalInput) {
             alert('This goal already exists.');
             return;
         }
     }
 
     const newGoal = document.createElement('li');
-    newGoal.textContent = goalInput;
+    newGoal.textContent = document.querySelector('#goalInput').value.trim();
     goalList.appendChild(newGoal);
 };
 
 // Event listener to the goal submit button
 document.querySelector('#submitGoal').addEventListener('click', addNewGoal);
+
 
 
 // ⚠️ Hint 1: Check for duplicates
